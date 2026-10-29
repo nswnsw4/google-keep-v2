@@ -1,235 +1,375 @@
-# Mid Project Template (TODO: 내 앱 이름 v2) — GAI3008 중간프로젝트 저장소 (1인 1팀)
+# Google Keep v2 — GAI3008 중간프로젝트
+
+Google Keep의 기존 사용성을 분석하고, 사용자 리뷰와 닐슨의 사용성 원칙을 바탕으로 UX/UI를 개선한 Flutter 기반 프로토타입입니다.
+
+본 프로젝트는 실제 데이터 저장 기능이 없는 **UI 중심의 중간프로젝트**입니다.
+
+---
 
 ## 앱 소개
 
-> 앱스토어 상품 페이지처럼 채웁니다. 칸 이름과 순서는 발표 자료의 "앱 소개" 장과 같습니다 — 바꾸지 않습니다.
-
 ### 앱 이름
-TODO: 앱 이름 v2
+Google Keep v2
 
 ### 부제
-TODO: 한 줄 (예: "○○를 3번 안에 끝내는 ○○ 앱")
+필요한 메모를 더 빠르게 찾고, 중요한 내용을 더 쉽게 정리하는 메모 앱
 
 ### 카테고리
-TODO: 스토어 카테고리 (예: 음식 및 음료 · 교육 · 생산성)
+생산성 (Productivity)
 
 ### 대상 사용자 / 사용 상황
-- 대상 사용자: TODO (퍼소나 한 줄 — 사업 요약과 같게)
-- 사용 상황: TODO (언제 · 어디서 · 어떤 기기로)
+
+- **대상 사용자:** 강의 내용을 기록하고 긴 메모를 자주 복습하는 대학생
+- **사용 상황:** 강의실, 도서관, 집 등에서 스마트폰이나 노트북을 사용해 메모를 작성하고 필요한 정보를 검색하는 상황
+
+**대표 퍼소나 — 김민수 (23세, 대학생)**
+
+김민수는 수업 중 중요한 내용을 Google Keep에 기록하고, 시험 기간에 저장한 메모를 다시 확인합니다. 그러나 긴 메모에서 특정 내용을 찾기 어렵고, 중요한 부분을 시각적으로 구분하기 불편하다는 문제를 경험합니다.
 
 ### 스크린샷
-이미지는 `docs/screenshots/`에 넣고 아래 링크의 파일 이름만 맞춥니다. 3~5칸, 왼쪽부터 v1(현행) → v2.
 
-| v1 현행 | v2 화면 A | v2 화면 B | v2 화면 C | v2 넓은 화면 |
-|---|---|---|---|---|
-| ![v1 현행](docs/screenshots/01_v1_current.png) | ![v2 A](docs/screenshots/02_v2_a.png) | ![v2 B](docs/screenshots/03_v2_b.png) | ![v2 C](docs/screenshots/04_v2_c.png) | ![v2 넓은 화면](docs/screenshots/05_v2_wide.png) |
-| TODO: 캡션 | TODO: 캡션 | TODO: 캡션 | TODO: 캡션 | TODO: 캡션 |
+프로젝트의 주요 화면은 다음과 같습니다.
+
+| 화면 | 설명 |
+|---|---|
+| v1 현행 | 기존 Google Keep의 메모 관리 화면 |
+| v2 홈 화면 | 메모 검색, 유형별 필터링, 정렬 및 보기 방식 변경 |
+| v2 필터 화면 | 메모 유형을 선택하고 필요한 메모만 표시 |
+| v2 메모 상세 화면 | 메모 내부 검색 및 검색 결과 이동 |
+| v2 서식 편집 화면 | 선택한 텍스트에 굵게, 기울임, 밑줄 적용 |
+
+스크린샷은 `docs/screenshots/` 폴더에 보관합니다.
 
 ### 설명
-1. TODO: 이 앱이 무엇을 하는가
-2. TODO: v2가 해결하는 문제 (리뷰·저니 근거)
-3. TODO: v2의 핵심 가치
+
+1. **Google Keep란?**  
+   Google Keep은 사용자가 메모를 작성하고 정리하며 필요한 정보를 확인할 수 있도록 도와주는 생산성 애플리케이션입니다.
+
+2. **v2가 해결하는 문제**  
+   기존 앱에서는 긴 메모 내부의 특정 단어를 찾거나 중요한 텍스트를 강조하는 데 불편함이 있습니다. 또한 메모 유형에 따라 원하는 정보를 빠르게 구분할 수 있도록 탐색 경험을 개선할 필요가 있습니다.
+
+3. **v2의 핵심 가치**  
+   메모 내부 검색, 콘텐츠 유형별 필터링, 선택 텍스트 서식 기능을 통해 정보 탐색과 정리 과정을 더 효율적으로 만듭니다.
 
 ### 새로운 기능
-v2에서 바뀐 것 3개 — 원칙 카드(`docs/원칙카드.md`)의 P번호와 연결합니다.
 
-| P번호 | 바뀐 것 (화면 · 요소 번호) | 근거 (리뷰 · 원칙) |
+| 닐슨 원칙 | 개선 기능 | 개선 이유 |
 |---|---|---|
-| P__ | TODO | TODO |
-| P__ | TODO | TODO |
-| P__ | TODO | TODO |
+| P01 — 시스템 상태의 가시성 | 메모 내부 검색, 검색어 강조, 일치 결과 수 표시 및 이전/다음 이동 | 검색 결과의 위치와 현재 검색 상태를 명확하게 전달 |
+| P03 — 사용자 통제와 자유 | 메모 유형별 필터링 및 선택 조건 표시 | 사용자가 원하는 기준으로 메모 목록을 조정 |
+| P07 — 유연성과 사용 효율성 | 선택 텍스트 굵게·기울임·밑줄 서식 | 중요한 정보를 빠르게 강조하고 구분 |
 
 ### 평가 및 리뷰
-| 항목 | 내용 |
-|---|---|
-| 현행 별점 | TODO: ★ _._ (App Store / Google Play) |
-| 리뷰 수 | TODO: ____개 |
-| 대표 리뷰 | TODO: "원문 인용" — ★_ · YYYY-MM-DD (**작성자 이름 지움**) |
-| 출처 | TODO: 스토어 링크 · 확인한 날짜 |
+
+본 프로젝트는 Google Keep의 앱스토어 사용자 리뷰를 분석하여 개선 방향을 도출했습니다.
+
+주요 리뷰 유형은 다음과 같습니다.
+
+- 긴 메모 내부에서 특정 단어나 문장을 검색하기 어렵다는 의견
+- 중요한 텍스트를 굵게 표시하는 기능에 대한 요구
+- 필터 선택 상태가 앱을 다시 실행한 후 유지되지 않는다는 의견
+
+리뷰 분석 결과와 원문 근거는 중간프로젝트 발표자료의 현행 앱 분석 및 부록에 정리했습니다.
 
 ---
 
 ## 작성자 · 제출 정보
 
-| 칸 | 내용 |
+| 항목 | 내용 |
 |---|---|
-| 현행 앱 | TODO: 실제 앱 이름 (스토어 링크) |
-| v2 한 문장 | TODO: v2의 핵심 가치 한 줄 |
-| 작성자 | TODO: 이름(또는 이니셜) · 1인 1팀 (각자 제출) |
-| 데모 | TODO: 데모 영상 1분 링크(`docs/영상/demo_1min.mp4`) 또는 배포 URL — **제출물 ①에 필수** |
-| AI 사용 | 규칙 `AGENTS.md` · 기록 `docs/prompt-log.md` · 셀프 논증 기록 `docs/셀프논증.md` · 기획 확정 태그 `v1-plan` |
+| 현행 앱 | Google Keep |
+| 프로젝트 | Google Keep v2 |
+| 과목 | GAI3008 중간프로젝트 |
+| 작성자 | 나선우 (1인 1팀) |
+| 개발 환경 | Flutter / Dart |
+| 데이터 | 로컬 json-server GET |
+| 구현 범위 | UI 프로토타입 |
+| GitHub | https://github.com/nswnsw4/google-keep-v2 |
+| 데모 영상 | [Google Keep v2 — 1분 데모 영상](https://drive.google.com/file/d/1MqBeQwz93TJ4Cq04I9HMFxwL8SGw4OL2/view?usp=sharing) |
 
-> 이 저장소는 **UI만 구현**합니다(중간고사 안내문 5장). 보이기는 다 동작하는 것처럼, 실제 동작(저장·로그인·결제·실제 계산)은 없습니다.
-> 템플릿 그대로는 "화면 A 목록 → 화면 B 상세 → 화면 C 결과(임의)" 빈칸 구조입니다. `TODO`를 검색해 내 앱으로 채웁니다: `grep -rn "TODO" lib docs README.md`
+**데모 영상:**  
+https://drive.google.com/file/d/1MqBeQwz93TJ4Cq04I9HMFxwL8SGw4OL2/view?usp=sharing
 
 ---
 
-## 0. 처음 받았을 때: 폴더 이름 · 앱 이름 바꾸기
+## 1. 프로젝트 목표
 
-1. **폴더(저장소) 이름**: `mid-project-template` → `<영문 앱 이름>-v2` (예: `mealapp-v2`). GitHub 저장소 이름도 같게.
-   - ⚠ **경로 전체를 영문·숫자·하이픈으로** 둡니다. 경로에 한글이 한 글자라도 있으면 `flutter analyze`(Flutter 3.44)가 analysis server 오류로 멈추는 것을 확인했습니다(`dart analyze`는 됨). 바탕화면·문서 폴더 이름이 한글이면 `C:\dev\` · `~/dev/` 같은 곳으로 옮깁니다.
-2. **앱 이름(화면에 보이는 이름)** — 아래만 바꾸면 됩니다:
-   - `lib/main.dart` — `MaterialApp(title: …)`, 각 화면 `AppBar` 제목
-   - Android: `android/app/src/main/AndroidManifest.xml`의 `android:label`
-   - iOS: `ios/Runner/Info.plist`의 `CFBundleDisplayName`
-   - 웹: `web/index.html`의 `<title>`, `web/manifest.json`의 `name`·`short_name`
-3. **패키지 이름 `mid_project_template`는 그대로 두는 것을 권장**합니다(바꾸면 `pubspec.yaml`의 `name`과 `test/`의 `import 'package:mid_project_template/…'`를 모두 고쳐야 함). 조직 ID는 `kr.ac.yonsei.gai3008`.
+본 프로젝트의 목표는 Google Keep의 기존 사용자 경험을 분석하고, 사용자 리뷰에서 발견한 불편함을 해결하는 새로운 UX/UI를 설계하는 것입니다.
 
-## 1. 실행 방법 — 터미널 2개
+단순히 새로운 기능을 추가하는 것이 아니라, 닐슨의 사용성 원칙을 적용하고 AI 반론 및 셀프 논증 과정을 통해 설계 결정의 타당성을 검토했습니다.
 
-준비물: Flutter(Dart SDK ^3.10), Node.js 18 이상.
+**주요 목표**
 
-**터미널 1 — 목업 서버(json-server)**
+1. 긴 메모 내부에서 원하는 정보를 빠르게 찾을 수 있도록 개선
+2. 메모 유형에 따른 탐색과 정렬 기능 개선
+3. 중요한 텍스트를 시각적으로 강조하는 기능 제공
+4. 로딩, 오류, 빈 상태를 명확하게 전달
+5. 스마트폰과 넓은 화면에서 모두 사용할 수 있는 적응형 UI 구현
+
+---
+
+## 2. 주요 기능
+
+### 2.1 홈 화면 — 메모 탐색
+
+- 메모 제목과 내용 검색
+- 콘텐츠 유형별 필터링
+- 정렬 기준 선택
+- 격자형(Grid) 및 목록형(List) 보기 전환
+- 선택한 필터 조건을 칩(Chip)으로 표시
+- 새 메모 작성 화면으로 이동
+
+### 2.2 메모 내부 검색
+
+- 메모 상세 화면에서 검색창 표시
+- 입력한 검색어와 일치하는 부분 강조
+- 검색 결과 개수 및 현재 위치 표시
+- 이전/다음 검색 결과 이동
+- 검색 종료 및 일반 편집 화면 복귀
+
+**개선 목적:** 긴 메모를 처음부터 끝까지 스크롤하지 않고도 필요한 내용을 찾을 수 있도록 지원합니다.
+
+### 2.3 텍스트 서식
+
+- 텍스트 범위 선택
+- 굵게(Bold)
+- 기울임(Italic)
+- 밑줄(Underline)
+- 서식 적용 결과를 화면에서 확인
+
+**개선 목적:** 중요한 강의 내용이나 핵심 정보를 시각적으로 구분할 수 있도록 합니다.
+
+### 2.4 상태별 화면
+
+- **Loading:** 데이터 요청 중 로딩 표시
+- **Error:** 데이터 요청 실패 시 오류 안내
+- **Empty:** 표시할 메모가 없을 때 빈 상태 안내
+
+### 2.5 적응형 레이아웃
+
+화면 너비에 따라 메모 목록의 배치를 조정하여 모바일 화면과 넓은 화면에서 사용할 수 있도록 구성했습니다.
+
+---
+
+## 3. UX/UI 기획 과정
+
+### 3.1 현행 앱 분석
+
+Google Keep의 기존 인터페이스와 앱스토어 리뷰를 분석하여 주요 사용성 문제를 도출했습니다.
+
+### 3.2 사용자 퍼소나 및 저니
+
+대학생 김민수가 강의 메모를 탐색하고 복습하는 과정을 사용자 저니로 구성했습니다.
+
+사용자 저니에서 가장 큰 불편함이 발생하는 단계는 **긴 메모 내부에서 특정 내용을 검색하는 단계**입니다.
+
+### 3.3 피쉬본 및 5 Why 분석
+
+문제의 원인을 여러 관점에서 분석하고, 5 Why 기법을 통해 핵심 원인을 도출했습니다.
+
+**우선 해결 문제:** 메모 상세 화면에서 필요한 정보의 위치를 빠르게 확인하고 이동할 수 있는 기능이 부족함.
+
+**해결 방향:** 검색창, 검색어 강조, 검색 결과 수, 이전/다음 탐색 기능 제공.
+
+### 3.4 AI 반론 및 셀프 논증
+
+각 UX/UI 개선안에 대해 다음 과정을 수행했습니다.
+
+1. 내 설계 주장
+2. AI 반론 및 스스로 찾은 반론
+3. 재반론 또는 설계 수정
+4. 최종 결론 — 유지 / 수정 / 폐기
+5. 사용자 리뷰 및 닐슨 원칙을 통한 근거 제시
+
+관련 기록은 `docs/` 폴더와 발표자료에 정리했습니다.
+
+---
+
+## 4. 기술 스택
+
+| 구분 | 사용 기술 |
+|---|---|
+| UI 프레임워크 | Flutter |
+| 프로그래밍 언어 | Dart |
+| 목업 데이터 서버 | json-server |
+| 데이터 형식 | JSON |
+| HTTP 통신 | GET |
+| 화면 상태 변경 | setState |
+| 비동기 UI | FutureBuilder |
+| 개발 도구 | Visual Studio Code |
+| 버전 관리 | Git / GitHub |
+
+본 프로젝트는 실제 서비스를 배포하기 위한 완성형 앱이 아니라, UX/UI 기획 결과를 시연하기 위한 프로토타입입니다.
+
+---
+
+## 5. 프로젝트 구조
+
+```text
+google-keep-v2/
+├── lib/
+│   ├── main.dart
+│   ├── api.dart
+│   ├── models.dart
+│   ├── widgets.dart
+│   └── screens/
+├── mock_server/
+│   ├── db.json
+│   ├── package.json
+│   └── README.md
+├── docs/
+│   ├── 디자인가이드.md
+│   ├── 원칙카드.md
+│   ├── prompt-log.md
+│   ├── 셀프논증.md
+│   ├── 자가평가.md
+│   └── screenshots/
+├── assets/
+├── pubspec.yaml
+└── README.md
+```
+
+- `lib/main.dart`: Google Keep v2 주요 UI 및 화면 구성
+- `mock_server/db.json`: 시연에 사용하는 목업 메모 데이터
+- `docs/`: UX/UI 기획 및 논증 관련 문서
+- `assets/`: UI에 사용되는 이미지 리소스
+
+---
+
+## 6. 실행 방법
+
+### 사전 준비
+
+- Flutter SDK
+- Dart SDK
+- Node.js 및 npm
+- Chrome 또는 Flutter 실행 가능한 개발 환경
+
+### Step 1. 프로젝트 다운로드
+
+```bash
+git clone https://github.com/nswnsw4/google-keep-v2.git
+cd google-keep-v2
+```
+
+### Step 2. Flutter 패키지 설치
+
+```bash
+flutter pub get
+```
+
+### Step 3. 로컬 목업 서버 실행
+
+새 터미널에서 다음 명령어를 실행합니다.
 
 ```bash
 cd mock_server
-npm install && npm start          # http://localhost:3000  (npm run mock 도 같음)
-curl http://localhost:3000/items  # 확인: JSON 배열이 나오면 성공
+npm install
+npm start
 ```
 
-**터미널 2 — 앱**
+서버 주소:
+
+```text
+http://localhost:3000
+```
+
+데이터 확인:
+
+```text
+http://localhost:3000/items
+```
+
+### Step 4. Flutter 앱 실행
+
+다른 터미널에서 프로젝트 루트로 이동한 후 실행합니다.
 
 ```bash
-flutter pub get && flutter run    # 저장소 루트(pubspec.yaml 있는 곳)에서
-flutter run -d chrome             # 웹으로 볼 때
+flutter run -d chrome
 ```
 
-| 실행 대상 | 앱이 부르는 주소 | 따로 할 일 |
-|---|---|---|
-| Chrome · macOS · Windows · iOS 시뮬레이터 | `http://localhost:3000` | 없음 |
-| **Android 에뮬레이터** | **`http://10.0.2.2:3000`** | 없음 — `lib/api.dart`가 Android면 자동으로 10.0.2.2를 씀 |
-| 실기기(같은 Wi-Fi) | PC IP | `flutter run --dart-define=API_BASE=http://192.168.0.10:3000` |
-| Vercel 배포(가산) | 배포 주소 | `--dart-define=API_BASE=https://<프로젝트>.vercel.app/api` — `mock_server/README.md` 5장 |
-
-- 서버가 꺼져 있으면 앱은 **오류 화면 + "다시 시도"**를 보여 줍니다(서버를 켜고 다시 시도 누르면 목록이 뜸).
-- 서버 설정·`db.json` 바꾸는 법·CORS: `mock_server/README.md`.
-
-### 상태 화면 시연 — `DEMO_STATE` (발표·영상용)
+또는 연결된 기기에서 실행합니다.
 
 ```bash
-flutter run --dart-define=DEMO_STATE=loading   # 3초 로딩 (slow 도 같음)
-flutter run --dart-define=DEMO_STATE=error     # 오류 + 다시 시도
-flutter run --dart-define=DEMO_STATE=empty     # 빈 상태
+flutter run
 ```
 
-서버 없이도 세 상태를 바로 보여 줄 수 있습니다. `API_BASE`와 함께 써도 됩니다.
+**주의:** Flutter 앱을 실행하기 전에 json-server가 정상적으로 실행되고 있어야 합니다.
 
-## 2. 구조
+---
 
-```
-mid-project-template/
-├── README.md                 # 실행 방법 [필수]
-├── AGENTS.md                 # AI 가드레일 (UI만) — CLAUDE.md는 이 파일을 따른다는 한 줄
-├── pubspec.yaml              # 추가 패키지는 http 하나
-├── lib/
-│   ├── main.dart             # 앱 뼈대 · 화면 흐름 주석
-│   ├── api.dart              # GET만 · API_BASE · DEMO_STATE
-│   ├── models.dart           # JSON → 객체 (Dart 3 패턴 fromJson)
-│   ├── widgets.dart          # LoadingView · ErrorView · EmptyView (+ NetImage)
-│   └── screens/
-│       ├── a_list_screen.dart    # 화면 A 목록 — GET /items, 3상태, 600dp 적응형
-│       ├── b_detail_screen.dart  # 화면 B 상세 — push로 들어옴, 탭(정보|메모), GET /notes
-│       └── c_result_sheet.dart   # 화면 C 결과(임의) — 모달 시트, 미리 정한 결과
-├── test/widget_test.dart     # 3상태 · push/tab/modal · 600dp 위젯 테스트
-├── mock_server/
-│   ├── db.json               # [필수] GET 데이터 (items · notes)
-│   ├── package.json          # json-server 0.17.4 고정
-│   ├── api/server.js · vercel.json   # (가산) 읽기 전용 배포
-│   └── README.md
-└── docs/
-    ├── 디자인가이드.md       # 화면 목록 · 원칙 P01–P10 · 요소 분석 · 가이드 글 · 상태관리 포인트
-    ├── 원칙카드.md           # 5칸 양식 (원칙 · 근거 · 적용 · 시연 · 판단)
-    ├── prompt-log.md         # 4칸 (요청 · AI 결과 · 판단 · 이유)
-    ├── 셀프논증.md           # 셀프 논증 기록: 내 주장 · 반론(AI) · 재반론 · 결론 · 근거 · 전/후
-    ├── 자가평가.md           # 공개 배점 40/20/25/15 그대로
-    ├── 영상/                 # demo_1min.mp4 · p01.mp4 …
-    └── screenshots/          # README '앱 소개' 스크린샷 (01_v1_current.png …)
-```
+## 7. 데이터 및 UI 구현 범위
 
-## 3. 화면 목록 ↔ 기획 문서 요소 번호
+본 프로젝트에서는 로컬 json-server의 데이터를 GET 요청으로 가져와 메모 목록을 표시합니다.
 
-| 화면 | 이름 (TODO: 비즈니스 명칭) | 파일 | 전환 | 요소 번호 |
-|---|---|---|---|---|
-| A | TODO | `lib/screens/a_list_screen.dart` | 첫 화면 | A-1 ~ A-6 |
-| B | TODO | `lib/screens/b_detail_screen.dart` | 쌓기(push) · 옆으로(tab) | B-1 ~ B-7 |
-| C | TODO | `lib/screens/c_result_sheet.dart` | 덮기(modal) | C-1 ~ C-4 |
+**구현된 UI 기능**
 
-각 화면 파일 맨 위에 **디자인 가이드 대응표**(번호 · Flutter 위젯명 · 비즈니스 명칭 · 원칙) 주석이 있고, 코드 안에서 같은 번호(`// A-5 P09`)로 찾을 수 있습니다. `docs/디자인가이드.md`와 1:1로 맞춥니다. **가이드에 없는 화면은 만들지 않습니다**(감점).
+- 메모 목록 및 상세 화면
+- 화면 전환
+- 검색 및 필터 선택
+- 정렬 및 보기 방식 변경
+- 메모 내부 검색
+- 텍스트 서식 표시
+- 로딩 / 오류 / 빈 상태
+- 적응형 화면 구성
 
-**상태관리 포인트**는 구현하지 않고 주석으로만 표시합니다: `// STATE: <데이터> → <보여질 위젯>` — 모아 보기 `grep -rn "STATE:" lib`
+**구현하지 않은 기능**
 
-## 4. 원칙 번호 추적 P01–P10 [권장]
+- 실제 계정 로그인 및 회원가입
+- 데이터 영구 저장
+- 서버 데이터 수정 및 삭제
+- 결제
+- 실제 개인정보 처리
+- Provider, Riverpod, Bloc 등의 상태관리 라이브러리
 
-P번호 = 닐슨 원칙 번호. 원칙 카드에 붙인 번호 하나를 다섯 곳에 그대로 씁니다.
+검색, 필터링 및 서식 변경은 UI 시연을 위한 동작이며, 서버 데이터에 영구적으로 반영되지 않습니다.
 
-| 어디 | 쓰는 법 |
+---
+
+## 8. 닐슨 사용성 원칙 적용
+
+| 원칙 | 적용 내용 |
 |---|---|
-| 디자인 가이드 | `docs/디자인가이드.md` 2장 표 · 요소 분석의 원칙 칸 |
-| 코드 주석 | 그 원칙을 보여 주는 위젯 줄 끝: `); // A-5 P09` |
-| 커밋 메시지 | `p09: 화면 A 오류 화면에 다시 시도` |
-| 영상 | `docs/영상/p09.mp4` (원칙별 5–10초) |
-| 발표 | 원칙 카드 P09 — 시연 칸 = p09.mp4 |
+| P01 — 시스템 상태의 가시성 | 검색 결과 강조, 일치 결과 수 및 현재 위치 표시 |
+| P03 — 사용자 통제와 자유 | 메모 필터 선택 및 변경, 검색 종료 |
+| P07 — 유연성과 사용 효율성 | 선택 텍스트 서식 기능 |
 
-찾기: `grep -rn "P09" lib/` · `git log --oneline --grep="p09"`
+각 원칙의 적용 근거와 설계 판단은 발표자료 및 원칙 카드에 정리했습니다.
 
-## 5. 기준점 Git 태그 `v1-plan` [권장]
+---
 
-내가 화면 기획(흐름 · 요소 분석 · 가이드 글)을 확정한 직후 **한 번만** 붙입니다. 그 뒤 커밋이 UI 진행 기록이 되고, 셀프 논증 기록의 전 · 후 기준이 됩니다.
+## 9. 데모 영상
 
-```bash
-git tag -a v1-plan -m "화면 기획 확정"
-git push origin v1-plan
-git log v1-plan..HEAD --oneline        # 그 뒤 무엇이 바뀌었나
-git diff v1-plan..HEAD --stat
-```
+**Google Keep v2 — 1분 데모**
 
-기획이 바뀌면 셀프 논증 기록에 쟁점으로 남기고, 태그는 지우지 않습니다.
+[데모 영상 보기 (Google Drive)](https://drive.google.com/file/d/1MqBeQwz93TJ4Cq04I9HMFxwL8SGw4OL2/view?usp=sharing)
 
-## 6. 영상 파일 이름
+데모에서는 다음 내용을 확인할 수 있습니다.
 
-- `docs/영상/demo_1min.mp4` — 전체 흐름 1분 [필수 — 제출물 ①, README "데모" 칸에 링크 · 배포 URL로 대신 가능]: 첫 화면 → 전환 → 임의 결과 → GET 목록 → 넓은 화면
-- `docs/영상/p01.mp4`, `p09.mp4` … — 원칙별 5–10초 클립 [권장], 원칙 카드 번호와 같게
-- 녹화 전: 개인정보 · 알림이 화면에 보이지 않는지 확인. GitHub는 100MB가 넘는 파일을 받지 않으니 큰 영상은 LMS·드라이브 링크로 README "데모" 칸에 적습니다.
+- Google Keep v2 홈 화면
+- 메모 검색 및 필터링
+- 메모 상세 화면 이동
+- 메모 내부 검색
+- 텍스트 서식 기능
+- UI 화면 구성
 
-## 7. 감점 점검 (제출 전, 결과가 비어 있어야 함)
+---
 
-```bash
-grep -rnE "http\.(post|put|patch|delete)|SharedPreferences|sqflite|hive|FirebaseAuth|ChangeNotifierProvider|Riverpod|BlocProvider" lib/ pubspec.yaml
-```
+## 10. 제출 정보
 
-걸린 줄은 지웁니다(안내문 8장). 검색은 이름만 찾으므로 화면을 직접 눌러 보며 실제로 저장·전송되는 곳이 없는지도 확인합니다. 자세한 점검: `docs/자가평가.md`.
+**과목:** GAI3008  
+**프로젝트:** Google Keep v2  
+**작성자:** 나선우  
+**제출 형식:** GitHub 저장소 URL + 발표자료 PDF
 
-## 8. 제출 전 clone 테스트 [필수 확인]
+**GitHub 저장소**
 
-내 컴퓨터에서만 되는 저장소를 막습니다. 다른 사람 입장에서 README 명령만으로 됩니까?
+https://github.com/nswnsw4/google-keep-v2
 
-1. 새 폴더에 받기: `git clone <저장소 URL> clone-test`
-2. 터미널 1: `cd clone-test/mock_server && npm install && npm start`
-3. 서버 확인: `curl http://localhost:3000/items` (내가 바꾼 `db.json` 키로)
-4. 터미널 2: `cd clone-test && flutter pub get`
-5. 실행: `flutter run -d chrome` (Android 에뮬레이터는 그냥 `flutter run`)
-6. 화면 전환 · GET 목록 · 로딩/오류/빈 상태(`DEMO_STATE`) · 넓은 화면(창 크기 늘리기) 확인 → 안 되면 README를 고치고 1부터 다시
+**데모 영상**
 
-자주 빠지는 것: `db.json`이 커밋되지 않음 · `node_modules/`까지 올림 · README의 폴더 이름이 실제와 다름.
+https://drive.google.com/file/d/1MqBeQwz93TJ4Cq04I9HMFxwL8SGw4OL2/view?usp=sharing
 
-## 9. 제출물 2종 체크 (LMS, 10/29(목) 15:00 전 — 9주차 수업 시작 전, 각자 제출)
+---
 
-발표는 10/29(목) 9주차 수업(7–9교시)입니다. 10/22(목)은 수업이 없습니다.
-
-- [ ] ① **데모 시연 + 코드** — 이 템플릿을 바탕으로 고친 **GitHub 저장소 URL** — **clone 테스트 통과**
-  - [ ] Flutter 코드 + `mock_server/db.json`
-  - [ ] README — 앱 소개 8칸 · 실행 방법 · **데모 영상 1분 링크 또는 배포 URL**("데모" 칸)
-  - [ ] `docs/` — 디자인 가이드 · 원칙 카드 · prompt-log · **셀프 논증 기록**(`docs/셀프논증.md`) · 자가평가
-- [ ] ② **발표자료** — `mid-project-presentation-template` 사용(PPTX 또는 PDF, 6분 발표 + 2분 질의)
-  - [ ] 본문 7장 + 부록 B1 데모·스크린샷 · B2 원칙 카드 · B3 prompt-log · B4 자가평가 · **B5 기획 상세**(사업 요약 · 저니 · 피쉬본/5 Why · 화면별 요소 분석표 · 상태관리 포인트)
-
-기획 1–5단계는 발표자료(본문 + 부록 B5)에 담습니다. 기획 양식 PPTX는 **선택(참고용)**이며 제출물이 아닙니다.
-
-## 10. 확인된 상태 (템플릿 배포 시점)
-
-```bash
-flutter analyze   # No issues found!  (경로가 영문일 때 — 0장 참고)
-flutter test      # 4개 통과: 3상태(로딩·오류→다시 시도 · 빈) · push/tab/modal 흐름 · 600dp 격자
-```
-
-`pubspec.yaml` 의존성: `flutter`, `cupertino_icons`, `http`뿐. 플랫폼 설정: Android 디버그 빌드 평문 HTTP 허용(`android/app/src/debug/AndroidManifest.xml`), macOS 나가는 네트워크 허용(`macos/Runner/*.entitlements`).
+본 프로젝트는 GAI3008 중간프로젝트 과제로 제작되었으며, 사용자 리뷰 분석과 UX/UI 설계 논증을 바탕으로 구현한 Flutter UI 프로토타입입니다.
